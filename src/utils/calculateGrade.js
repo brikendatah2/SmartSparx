@@ -36,17 +36,18 @@ const calculateGrade = score => {
     grade = 'F';
   }
 
-  if (score >= 90) {
-    remarks = "Outstanding! You've mastered this quiz. Well done!";
-  } else if (score >= 80 && score <= 89) {
-    remarks = "Great job! You've excelled in this quiz.";
-  } else if (score >= 70 && score <= 79) {
-    remarks = "Good effort! You've passed the quiz.";
-  } else if (score >= 60 && score <= 69) {
-    remarks = "You've passed, but there's potential for improvement.";
-  } else if (score < 60) {
-    remarks = "Learning is a journey. Keep going, and you'll get there.";
-  }
+if (score >= 90) {
+  remarks = "Exemplary! You've mastered this quiz with finesse. Outstanding!";
+} else if (score >= 80 && score <= 89) {
+  remarks = "Remarkable achievement! You've demonstrated exceptional prowess in this quiz.";
+} else if (score >= 70 && score <= 79) {
+  remarks = "Commendable effort! You've successfully navigated this quiz.";
+} else if (score >= 60 && score <= 69) {
+  remarks = "You've cleared the hurdle, yet there's potential for refinement.";
+} else if (score < 60) {
+  remarks = "Every stride contributes to the odyssey of learning. Persist, and you shall triumph!";
+}
+
 
   return {
     grade,
