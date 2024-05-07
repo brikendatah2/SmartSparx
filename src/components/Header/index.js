@@ -23,7 +23,7 @@ const Header = () => {
         setAppAccepted(true);
         console.log('The user agreed to add the app to the home screen');
       } else {
-        console.log('User dismissed the A2HS prompt');
+        console.log('The user declined to add the app to the home screen');
       }
     });
   };
