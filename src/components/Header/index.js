@@ -21,7 +21,7 @@ const Header = () => {
     promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
         setAppAccepted(true);
-        console.log('User accepted the A2HS prompt');
+        console.log('The user agreed to add the app to the home screen');
       } else {
         console.log('User dismissed the A2HS prompt');
       }
