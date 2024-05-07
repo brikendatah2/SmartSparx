@@ -22,7 +22,7 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
         Swal.fire({
           icon: 'info',
           title: `Uh-oh! Time's up!`,
-          text: "Let's see how you did this time!",
+          text: "Let's find out your performance this round!",
           confirmButtonText: 'Check Results',
           timer: 5000,
           willClose: () => timeOver(totalTime - timerTime),
