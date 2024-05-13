@@ -130,7 +130,7 @@ const Main = ({ startQuiz }) => {
               )}
               <Divider />
               <Item.Meta>
-                <p>In which category do you want to play the quiz?</p>
+                <p>In what field do you wish to engage in the quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -143,7 +143,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>How many questions do you want in your quiz?</p>
+                <p>How numerous inquiries would you like to include in your quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -156,7 +156,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>How difficult do you want your quiz to be?</p>
+                <p>What level of challenge do you desire for your quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -169,7 +169,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Which type of questions do you want in your quiz?</p>
+                <p>What category of inquiries do you prefer for your quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -182,7 +182,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Please select the countdown time for your quiz.</p>
+                <p>Please designate the countdown duration for your quiz.</p>
                 <Dropdown
                   search
                   selection
