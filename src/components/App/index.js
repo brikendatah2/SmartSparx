@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Layout from '../Layout';
-import Loader from '../Loader';
-import Main from '../Main';
-import Quiz from '../Quiz';
-import Result from '../Result';
+import Layout from "../Layout";
+import Main from "../Main";
 
-import { shuffle } from '../../utils';
+import { shuffle } from "../../utils";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +17,7 @@ const App = () => {
   const startQuiz = (data, countdownTime) => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Loading your quiz...',
+      title: "Loading your quiz...",
       message: "It won't be long!",
     });
     setCountdownTime(countdownTime);
@@ -32,11 +29,11 @@ const App = () => {
     }, 1000);
   };
 
-  const endQuiz = resultData => {
+  const endQuiz = (resultData) => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Fetching your results...',
-      message: 'Just a moment!',
+      title: "Fetching your results...",
+      message: "Just a moment!",
     });
 
     setTimeout(() => {
@@ -50,12 +47,12 @@ const App = () => {
   const replayQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Getting ready for round two.',
+      title: "Getting ready for round two.",
       message: "It won't take long!",
     });
 
     const shuffledData = shuffle(data);
-    shuffledData.forEach(element => {
+    shuffledData.forEach((element) => {
       element.options = shuffle(element.options);
     });
 
@@ -72,8 +69,8 @@ const App = () => {
   const resetQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: 'Loading the home screen.',
-      message: 'Thank you for playing!',
+      title: "Loading the home screen.",
+      message: "Thank you for playing!",
     });
 
     setTimeout(() => {
@@ -88,16 +85,10 @@ const App = () => {
 
   return (
     <Layout>
-      {loading && <Loader {...loadingMessage} />}
       {!loading && !isQuizStarted && !isQuizCompleted && (
         <Main startQuiz={startQuiz} />
       )}
-      {!loading && isQuizStarted && (
-        <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
-      )}
-      {!loading && isQuizCompleted && (
-        <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />
-      )}
+ 
     </Layout>
   );
 };
