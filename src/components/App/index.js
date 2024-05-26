@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Layout from "../Layout";
+import Loader from "../Loader";
 import Main from "../Main";
 
 import { shuffle } from "../../utils";
@@ -17,8 +18,8 @@ const App = () => {
   const startQuiz = (data, countdownTime) => {
     setLoading(true);
     setLoadingMessage({
-      title: "Loading your quiz...",
-      message: "It won't be long!",
+     title: "Preparing your quiz...",
+     message: "Just a short wait!",
     });
     setCountdownTime(countdownTime);
 
@@ -85,6 +86,7 @@ const App = () => {
 
   return (
     <Layout>
+     {loading && <Loader {...loadingMessage} />}
       {!loading && !isQuizStarted && !isQuizCompleted && (
         <Main startQuiz={startQuiz} />
       )}
