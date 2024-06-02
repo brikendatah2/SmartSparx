@@ -33,8 +33,8 @@ const App = () => {
   const endQuiz = (resultData) => {
     setLoading(true);
     setLoadingMessage({
-      title: "Fetching your results...",
-      message: "Just a moment!",
+      title: "Retrieving your results...",
+      message: "Please wait a moment!",
     });
 
     setTimeout(() => {
