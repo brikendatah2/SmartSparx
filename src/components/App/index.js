@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Layout from "../Layout";
 import Loader from "../Loader";
 import Main from "../Main";
+import Quiz from "../Quiz";
 
 import { shuffle } from "../../utils";
 
@@ -90,7 +91,9 @@ const App = () => {
       {!loading && !isQuizStarted && !isQuizCompleted && (
         <Main startQuiz={startQuiz} />
       )}
- 
+      {!loading && isQuizStarted && (
+        <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
+      )}
     </Layout>
   );
 };
