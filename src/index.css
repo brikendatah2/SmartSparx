@@ -1,0 +1,82 @@
+@import url(../node_modules/semantic-ui-css/semantic.css);
+
+.ui.inverted.menu {
+    border: 0px solid transparent;
+    background: #8597F8;
+    box-shadow: none;
+  }
+
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    min-width: 320px;
+    background: #8597F8;
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4285em;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  .ui.segment:first-child {
+    margin-top: 0em;
+    background: #ddd;
+  }
+
+  
+  .ui.items > .item > .content p {
+    margin: 0em 0em 0.5em;
+    font-size: large;
+}
+
+.ui.items > .item .meta * {
+    margin-right: 0em;
+}
+
+.ui.primary.buttons .button, .ui.primary.button {
+    background-color: #fff;
+    color: #000;
+    text-shadow: none;
+    background-image: none;
+}
+
+
+h2:first-child, h3:first-child, h4:first-child, h5:first-child {
+    margin-top: 0em;
+    margin-left: 40px;
+}
+
+i.icon.info.circle:before {
+  content: "\f05a";
+  color: #8597F8;
+}
+
+.ui.huge.message {
+  font-size: 1.4em;
+}
+
+.ui.items > .item .extra > [class*="right floated"] {
+  margin: 0.25rem 0em 0.25rem 0.5rem;
+}
+
+.ui.items > .item > .content a:not(.ui) {
+  color: '';
+  transition: color 0.1s ease;
+  margin-right: 0em;
+}
+
+.ui.block.header {
+  background: #fff;
+  padding: 0.4em 1rem;
+  box-shadow: none;
+  border: 1px solid #000000;
+  border-radius: 6px;
+}
+
+h2:first-child, h3:first-child, h4:first-child, h5:first-child {
+  margin-top: em;
+  margin-left: 30px;
+  border: 0.1px solid #000000;
+}
+
