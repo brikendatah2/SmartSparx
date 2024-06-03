@@ -118,7 +118,7 @@ const Main = ({ startQuiz }) => {
       <Segment>
         <Item.Group divided>
           <Item>
-            // <Item.Image src={mindImg} />
+                {/* <Item.Image src={mindImg}/> */}
                 <Item.Image src={mind}/>
             <Item.Content>
               <Item.Header>
