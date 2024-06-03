@@ -22,4 +22,28 @@ const getLetter = number => {
   return letter;
 };
 
+const handleKeyPress = event => {
+  const key = event.key.toLowerCase();
+
+  const keyMap = {
+    'a': 0,
+    'b': 1,
+    'c': 2,
+    'd': 3
+  };
+
+  if (key in keyMap) {
+    const number = keyMap[key];
+    const letter = getLetter(number);
+    console.log(letter); 
+    selectOption(number); 
+  }
+};
+
+const selectOption = number => {
+  //  console.log(`Option ${number} selected`);
+};
+
+document.addEventListener('keypress', handleKeyPress);
+
 export default getLetter;
