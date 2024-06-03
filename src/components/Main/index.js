@@ -10,7 +10,8 @@ import {
   Message,
 } from 'semantic-ui-react';
 
-import mindImg from '../../images/mind.svg';
+// import mindImg from '../../images/mind.svg';
+import mind from '../../images/images.png';
 
 import {
   CATEGORIES,
@@ -117,7 +118,8 @@ const Main = ({ startQuiz }) => {
       <Segment>
         <Item.Group divided>
           <Item>
-            <Item.Image src={mindImg} />
+            // <Item.Image src={mindImg} />
+                <Item.Image src={mind}/>
             <Item.Content>
               <Item.Header>
                 <h1>The Ultimate Trivia Quiz</h1>
