@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -27,6 +26,29 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   useEffect(() => {
     if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [questionIndex]);
+
+  useEffect(() => {
+    const handleKeyPress = event => {
+      const key = event.key.toLowerCase();
+      const keyMap = {
+        'a': 0,
+        'b': 1,
+        'c': 2,
+        'd': 3
+      };
+
+      if (key in keyMap) {
+        const number = keyMap[key];
+        const option = he.decode(data[questionIndex].options[number]);
+        setUserSlectedAns(option);
+      }
+    };
+
+    document.addEventListener('keypress', handleKeyPress);
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, [data, questionIndex]);
 
   const handleItemClick = (e, { name }) => {
     setUserSlectedAns(name);
@@ -97,7 +119,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   </Message>
                   <br />
                   <Item.Description>
-                    <h3>Please select one of the following options:</h3>
+                    <h3>Please choose one of the following answers:</h3>
                   </Item.Description>
                   <Divider />
                   <Menu vertical fluid size="massive">
