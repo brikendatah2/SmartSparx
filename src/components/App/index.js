@@ -4,6 +4,7 @@ import Layout from "../Layout";
 import Loader from "../Loader";
 import Main from "../Main";
 import Quiz from "../Quiz";
+import Result from "../Result";
 
 import { shuffle } from "../../utils";
 
@@ -93,6 +94,9 @@ const App = () => {
       )}
       {!loading && isQuizStarted && (
         <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
+      )}
+        {!loading && isQuizCompleted && (
+        <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />
       )}
     </Layout>
   );
