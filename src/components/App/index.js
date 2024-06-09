@@ -73,7 +73,7 @@ const App = () => {
     setLoading(true);
     setLoadingMessage({
       title: "Loading the main screen.",
-      message: "Loading the main screen.",
+      message: "We appreciate you playing!",
     });
 
     setTimeout(() => {
