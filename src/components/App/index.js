@@ -72,8 +72,8 @@ const App = () => {
   const resetQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: "Loading the home screen.",
-      message: "Thank you for playing!",
+      title: "Loading the main screen.",
+      message: "Loading the main screen.",
     });
 
     setTimeout(() => {
