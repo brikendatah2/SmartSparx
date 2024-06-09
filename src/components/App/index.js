@@ -50,8 +50,8 @@ const App = () => {
   const replayQuiz = () => {
     setLoading(true);
     setLoadingMessage({
-      title: "Getting ready for round two.",
-      message: "It won't take long!",
+      title: "Preparing for the next round.",
+      message: "This will be quick!",
     });
 
     const shuffledData = shuffle(data);
