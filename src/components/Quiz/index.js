@@ -19,7 +19,7 @@ import { getLetter } from '../../utils';
 const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [userSlectedAns, setUserSlectedAns] = useState(null);
+  const [userSelectedAns, setUserSelectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
 
@@ -34,13 +34,15 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
         'a': 0,
         'b': 1,
         'c': 2,
-        'd': 3
+        'd': 3,
       };
 
       if (key in keyMap) {
         const number = keyMap[key];
         const option = he.decode(data[questionIndex].options[number]);
-        setUserSlectedAns(option);
+        setUserSelectedAns(option);
+      } else if (key === 'enter' && userSelectedAns) {
+        handleNext();
       }
     };
 
@@ -48,22 +50,22 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     return () => {
       document.removeEventListener('keypress', handleKeyPress);
     };
-  }, [data, questionIndex]);
+  }, [data, questionIndex, userSelectedAns]);
 
   const handleItemClick = (e, { name }) => {
-    setUserSlectedAns(name);
+    setUserSelectedAns(name);
   };
 
   const handleNext = () => {
     let point = 0;
-    if (userSlectedAns === he.decode(data[questionIndex].correct_answer)) {
+    if (userSelectedAns === he.decode(data[questionIndex].correct_answer)) {
       point = 1;
     }
 
     const qna = questionsAndAnswers;
     qna.push({
       question: he.decode(data[questionIndex].question),
-      user_answer: userSlectedAns,
+      user_answer: userSelectedAns,
       correct_answer: he.decode(data[questionIndex].correct_answer),
       point,
     });
@@ -79,7 +81,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 
     setCorrectAnswers(correctAnswers + point);
     setQuestionIndex(questionIndex + 1);
-    setUserSlectedAns(null);
+    setUserSelectedAns(null);
     setQuestionsAndAnswers(qna);
   };
 
@@ -131,7 +133,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                         <Menu.Item
                           key={decodedOption}
                           name={decodedOption}
-                          active={userSlectedAns === decodedOption}
+                          active={userSelectedAns === decodedOption}
                           onClick={handleItemClick}
                         >
                           <b style={{ marginRight: '8px' }}>{letter}</b>
@@ -151,7 +153,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     size="big"
                     icon="right chevron"
                     labelPosition="right"
-                    disabled={!userSlectedAns}
+                    disabled={!userSelectedAns}
                   />
                 </Item.Extra>
               </Item.Content>
