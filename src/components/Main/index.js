@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Container,
   Segment,
@@ -8,10 +8,10 @@ import {
   Divider,
   Button,
   Message,
-} from 'semantic-ui-react';
+} from "semantic-ui-react";
 
 // import mindImg from '../../images/mind.svg';
-import mind from '../../images/images.png';
+import mind from "../../images/images.png";
 
 import {
   CATEGORIES,
@@ -19,16 +19,16 @@ import {
   DIFFICULTY,
   QUESTIONS_TYPE,
   COUNTDOWN_TIME,
-} from '../../constants';
-import { shuffle } from '../../utils';
+} from "../../constants";
+import { shuffle } from "../../utils";
 
-import Offline from '../Offline';
+import Offline from "../Offline";
 
 const Main = ({ startQuiz }) => {
-  const [category, setCategory] = useState('0');
+  const [category, setCategory] = useState("0");
   const [numOfQuestions, setNumOfQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState('easy');
-  const [questionsType, setQuestionsType] = useState('0');
+  const [difficulty, setDifficulty] = useState("easy");
+  const [questionsType, setQuestionsType] = useState("0");
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
     minutes: 120,
@@ -61,8 +61,8 @@ const Main = ({ startQuiz }) => {
     const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
-      .then(respone => respone.json())
-      .then(data =>
+      .then((respone) => respone.json())
+      .then((data) =>
         setTimeout(() => {
           const { response_code, results } = data;
 
@@ -73,8 +73,8 @@ const Main = ({ startQuiz }) => {
                 Asking for 50 Questions in a Category that only has 20.)
                 <br />
                 <br />
-                Please change the <strong>No. of Questions</strong>,{' '}
-                <strong>Difficulty Level</strong>, or{' '}
+                Please change the <strong>No. of Questions</strong>,{" "}
+                <strong>Difficulty Level</strong>, or{" "}
                 <strong>Type of Questions</strong>.
               </p>
             );
@@ -85,7 +85,7 @@ const Main = ({ startQuiz }) => {
             return;
           }
 
-          results.forEach(element => {
+          results.forEach((element) => {
             element.options = shuffle([
               element.correct_answer,
               ...element.incorrect_answers,
@@ -99,7 +99,7 @@ const Main = ({ startQuiz }) => {
           );
         }, 1000)
       )
-      .catch(error =>
+      .catch((error) =>
         setTimeout(() => {
           if (!navigator.onLine) {
             setOffline(true);
@@ -118,11 +118,13 @@ const Main = ({ startQuiz }) => {
       <Segment>
         <Item.Group divided>
           <Item>
-                {/* <Item.Image src={mindImg}/> */}
-                <Item.Image src={mind}/>
+            {/* <Item.Image src={mindImg}/> */}
+            <Item.Image src={mind} />
             <Item.Content>
               <Item.Header>
-                <h1>SmartSparx <br></br>Brikenda T. & Yllka M.</h1>
+                <h1>
+                  SmartSparx
+                </h1>
               </Item.Header>
               {error && (
                 <Message error onDismiss={() => setError(null)}>
@@ -134,6 +136,7 @@ const Main = ({ startQuiz }) => {
               <Item.Meta>
                 <p>In what field do you wish to engage in the quiz?</p>
                 <Dropdown
+                  search
                   fluid
                   selection
                   name="category"
@@ -145,8 +148,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>How numerous inquiries would you like to include in your quiz?</p>
+                <p>
+                  How numerous inquiries would you like to include in your quiz?
+                </p>
                 <Dropdown
+                  search 
                   fluid
                   selection
                   name="numOfQ"
@@ -185,39 +191,50 @@ const Main = ({ startQuiz }) => {
                 />
                 <br />
                 <p>Please designate the countdown duration for your quiz.</p>
-                <Dropdown
-                  search
-                  selection
-                  name="hours"
-                  placeholder="Select Hours"
-                  header="Select Hours"
-                  options={COUNTDOWN_TIME.hours}
-                  value={countdownTime.hours}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="minutes"
-                  placeholder="Select Minutes"
-                  header="Select Minutes"
-                  options={COUNTDOWN_TIME.minutes}
-                  value={countdownTime.minutes}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
-                <Dropdown
-                  search
-                  selection
-                  name="seconds"
-                  placeholder="Select Seconds"
-                  header="Select Seconds"
-                  options={COUNTDOWN_TIME.seconds}
-                  value={countdownTime.seconds}
-                  onChange={handleTimeChange}
-                  disabled={processing}
-                />
+                <div style={{ display: "flex" }}>
+                  <div>
+                    <p style={{fontSize: "17px"}}>Hours</p>
+                    <Dropdown
+                      search
+                      selection
+                      name="hours"
+                      placeholder="Select Hours"
+                      header="Select Hours"
+                      options={COUNTDOWN_TIME.hours}
+                      value={countdownTime.hours}
+                      onChange={handleTimeChange}
+                      disabled={processing}
+                    />
+                  </div>
+                  <div>
+                    <p style={{fontSize: "17px"}}>Minutes</p>
+                    <Dropdown
+                      search
+                      selection
+                      name="minutes"
+                      placeholder="Select Minutes"
+                      header="Select Minutes"
+                      options={COUNTDOWN_TIME.minutes}
+                      value={countdownTime.minutes}
+                      onChange={handleTimeChange}
+                      disabled={processing}
+                    />
+                  </div>
+                  <div>
+                    <p style={{fontSize: "17px"}}>Seconds</p>
+                    <Dropdown
+                      search
+                      selection
+                      name="seconds"
+                      placeholder="Select Seconds"
+                      header="Select Seconds"
+                      options={COUNTDOWN_TIME.seconds}
+                      value={countdownTime.seconds}
+                      onChange={handleTimeChange}
+                      disabled={processing}
+                    />
+                  </div>
+                </div>
               </Item.Meta>
               <Divider />
               <Item.Extra>
@@ -226,7 +243,7 @@ const Main = ({ startQuiz }) => {
                   size="big"
                   icon="play"
                   labelPosition="left"
-                  content={processing ? 'Processing...' : 'Play Now'}
+                  content={processing ? "Processing..." : "Play Now"}
                   onClick={fetchData}
                   disabled={!allFieldsSelected || processing}
                 />
